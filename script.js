@@ -91,7 +91,18 @@ button.onclick = function () {
         setColor(temp)
         changeBoard(board)
     }
-    xhrRequest.open('get', 'https://sugoku.herokuapp.com/board?difficulty=easy')
+
+    var element = document.getElementsByName('switch-two')
+    var button
+    for(i=0; i<element.length; i++){
+        if(element[i].checked){
+            button = element[i].value
+        }
+    }
+
+    console.log(button)
+    
+    xhrRequest.open('get', 'https://sugoku.herokuapp.com/board?difficulty='+button)
     //we can change the difficulty of the puzzle the allowed values of difficulty are easy, medium, hard and random
     xhrRequest.send()
 }
